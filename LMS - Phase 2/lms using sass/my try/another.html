@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Table with Divs</title>
+</head>
+<body>
+
+<div class="container mt-3">
+    <form id="myForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="addRow()">Add Row</button>
+    </form>
+
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="myTableBody">
+            <!-- Table rows will be dynamically added here -->
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+    // Function to add a new row to the table
+    function addRow() {
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+
+        // Create a new row with columns
+        var newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td>${name}</td>
+            <td>${email}</td>
+            <td>
+                <div class="d-flex">
+                    <button type="button" class="btn btn-warning btn-sm mr-1">Edit</button>
+                    <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                </div>
+            </td>
+        `;
+
+        // Append the new row to the table body
+        document.getElementById('myTableBody').appendChild(newRow);
+
+        // Clear form values
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Image to Card</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- Button to trigger the modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  Add Image to Card
+</button>
+<!-- Display the card with the selected image -->
+<div class="card mt-3" id="imageCard" style="display: none;">
+    <img class="card-img-top" id="selectedImage" alt="Selected Image">
+    <div class="card-body">
+      <h5 class="card-title">Card Title</h5>
+      <p class="card-text">Some example text.</p>
+    </div>
+  </div>
+</div>
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add Image to Card</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <!-- Form to allow the user to select an image -->
+        <form id="imageForm">
+          <div class="form-group">
+            <label for="imageInput">Select Image:</label>
+            <input type="file" class="form-control-file" id="imageInput" accept="image/*">
+          </div>
+          <button type="button" class="btn btn-primary" >Add Image</button>
+        </form>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="addImageToCard()">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Include Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+  // Function to add the selected image to the card
+  function addImageToCard() {
+    const imageInput = document.getElementById('imageInput');
+    const selectedImage = document.getElementById('selectedImage');
+    const imageCard = document.getElementById('imageCard');
+
+    // Check if a file is selected
+    if (imageInput.files.length > 0) {
+      const file = imageInput.files[0];
+
+      // Read the selected image as a data URL
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        // Set the data URL as the source of the image
+        selectedImage.src = e.target.result;
+
+        // Display the card with the selected image
+        imageCard.style.display = 'block';
+
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+</script>
+
+</body>
+</html>

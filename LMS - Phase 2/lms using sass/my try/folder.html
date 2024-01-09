@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disable File Types Example</title>
+</head>
+<body>
+    <input type="file" id="fileInput" multiple>
+    <button onclick="uploadFiles()">Upload</button>
+
+    <script>
+        function uploadFiles() {
+            const input = document.getElementById('fileInput');
+            const files = input.files;
+
+            if (files.length === 0) {
+                alert('Please select at least one file.');
+                return;
+            }
+
+            // Check file types and disable certain types
+            for (let i = 0; i < files.length; i++) {
+                const fileType = files[i].type;
+                if (isFileTypeDisabled(fileType)) {
+                    alert('File type ' + fileType + ' is not allowed.');
+                    return;
+                }
+            }
+
+            // Continue with file upload logic
+            // ...
+
+            alert('Files uploaded successfully.');
+        }
+
+        function isFileTypeDisabled(fileType) {
+            // Add the file types you want to disable in this array
+            const disabledFileTypes = ['application/pdf', 'image/png'];
+
+            return disabledFileTypes.includes(fileType);
+        }
+    </script>
+</body>
+</html>
+    

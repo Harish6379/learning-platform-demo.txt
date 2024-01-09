@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Table Row on Modal</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- Table with sample data -->
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>John Doe</td>
+      <td>john@example.com</td>
+      <td><button class="btn btn-info view-details" data-toggle="modal" data-target="#detailsModal">Details</button></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Jane Doe</td>
+      <td>jane@example.com</td>
+      <td><button class="btn btn-info view-details" data-toggle="modal" data-target="#detailsModal">Details</button></td>
+    </tr>
+    <!-- Add more rows as needed -->
+  </tbody>
+</table>
+
+<!-- The Modal -->
+<div class="modal" id="detailsModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Row Details</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body" id="modal-body">
+        <!-- Content will be dynamically added here -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Include Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+  // Handle click event for the "Details" button
+  $(document).on('click', '.view-details', function() {
+    const clickedRow = $(this).closest('tr');
+    const modalBody = $('#modal-body');
+
+    // Get data from the clicked row
+    const id = clickedRow.find('td:eq(0)').text();
+    const name = clickedRow.find('td:eq(1)').text();
+    const email = clickedRow.find('td:eq(2)').text();
+
+    // Build HTML content for the modal body
+    const modalContent = `
+      <p><strong>ID:</strong> ${id}</p>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+    `;
+
+    // Set the content of the modal body
+    modalBody.html(modalContent);
+
+    // Open the modal
+    $('#detailsModal').modal('show');
+  });
+</script>
+
+</body>
+</html>

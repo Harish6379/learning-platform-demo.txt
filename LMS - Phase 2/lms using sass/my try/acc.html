@@ -1,0 +1,47 @@
+<div class="accordion-item mb-3 rounded-2 shadow">
+    <h2 class="accordion-header d-flex">
+      <button class="btn"><i class="fa fa-pencil-square-o" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#editHeadingModal"></i></button>
+      <button id="accordionHeading" class="accordion-button collapsed rounded-2 fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1">
+        Introduction to HTML
+      </button>
+    </h2>
+    <div id="flush-collapse1" class="accordion-collapse collapse" data-bs-parent="#accordionTopic">
+      <div class="accordion-body">
+        <!-- ... (rest of your content) ... -->
+      </div>
+    </div>
+  </div>
+  
+  <!-- Edit Heading Modal -->
+  <div class="modal fade" id="editHeadingModal" tabindex="-1" aria-labelledby="editHeadingModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editHeadingModalLabel">Edit Heading</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <label for="newHeading">New Heading:</label>
+          <input type="text" id="newHeading" class="form-control">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="updateAccordionHeading()">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Function to update the accordion heading
+    function updateAccordionHeading() {
+      const newHeadingInput = document.getElementById('newHeading');
+      const accordionHeading = document.getElementById('accordionHeading');
+  
+      if (newHeadingInput && accordionHeading) {
+        accordionHeading.innerText = newHeadingInput.value;
+        $('#editHeadingModal').modal('hide'); // Close the modal after updating heading
+      }
+    }
+  </script>
+  

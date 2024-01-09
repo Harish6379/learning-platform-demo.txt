@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Users Dynamically</title>
+</head>
+<body>
+
+<div id="userList">
+  <!-- Existing users will be displayed here -->
+</div>
+
+<form id="userForm">
+  <label for="username">Username:</label>
+  <input type="text" id="username" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" required>
+
+  <button type="button" onclick="addUser()">Add User</button>
+</form>
+
+<script>
+let userIdCounter = 1; // Counter for dynamically assigning user IDs
+
+function addUser() {
+  const usernameInput = document.getElementById('username');
+  const emailInput = document.getElementById('email');
+
+  const username = usernameInput.value.trim();
+  const email = emailInput.value.trim();
+
+  if (username && email) {
+    // Create a new user element
+    const userElement = document.createElement('div');
+    userElement.innerHTML = `<strong>User ${userIdCounter}:</strong> ${username}, ${email}`;
+
+    // Assign a unique ID to the user element
+    userElement.id = `user${userIdCounter}`;
+
+    // Append the user element to the user list
+    document.getElementById('userList').appendChild(userElement);
+
+    // Increment the user ID counter for the next user
+    userIdCounter++;
+
+    // Clear the input fields
+    usernameInput.value = '';
+    emailInput.value = '';
+  } else {
+    alert('Please enter both username and email.');
+  }
+}
+</script>
+
+</body>
+</html>

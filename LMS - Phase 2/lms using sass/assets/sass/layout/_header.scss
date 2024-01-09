@@ -1,0 +1,203 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as mx;
+
+nav{
+    position: fixed;
+    z-index: 1;
+    width:240px;
+    background-color: v.$side-nav;
+    transition: 0.5s;
+    .logo-image{
+        img{
+            width:40px;
+            object-fit:over;
+        }
+    }
+    .links{
+        margin-top: 40px;
+        height:calc(100vh - 90px);
+        li{
+            a{
+                color:white;
+                height: 70px;
+                transition: 0.3s ease-in-out;
+                &:hover{
+                    background-color:#115270;
+                    // color:v.$btn-text-color;
+                    
+                }
+                &.active{
+                    @include mx.btn-color;
+                    opacity: 0.96;
+                }
+            }
+            i{
+                min-width:38px;
+            }
+        } 
+        .navname{
+            margin-left: 10px;
+        }
+    }
+
+}
+
+nav.close{
+    width:55px;
+    .logo{
+        opacity:0;
+        pointer-events: none;
+    }
+    .nav-name{
+        opacity:0;
+        pointer-events: none;
+    }
+    ~ .header{
+        left:55px;
+        width:calc(100% - 55px);
+    }
+    ~ .content{
+        left:55px;
+        width:calc(100% - 55px);
+    }
+}
+
+.header{
+    position: relative;
+    position: fixed;
+    height: 60px;
+    width:100%;
+    z-index: 3;
+    width:calc(100% - 240px);
+    left:240px;
+    transition: 0.5s;
+    .bar-toggle{
+        width:3%;
+        cursor: pointer;
+    }
+    .welcome-note{
+        width:70%;
+        margin:0;
+    }
+}
+.content{
+    position:relative;
+    left:240px;
+    top:65px;
+    width:calc(100% - 240px);
+    transition: 0.5s;
+}
+
+@media screen and (max-width:1000px){
+    nav{
+        width:55px;
+    }
+    nav.close{
+        width:240px;
+        z-index: 3;
+    }
+    nav.close .logo{
+        opacity: 1;
+        pointer-events: auto;
+        z-index: 3;
+    }
+    nav .logo{
+        opacity:0;
+        pointer-events: none;
+    }
+    nav li a .nav-name{
+        opacity:0;
+        pointer-events: none;
+    }
+    nav.close li a .nav-name{
+        opacity:1;
+        pointer-events: auto;
+        z-index: 3;
+    }
+    nav ~.header{
+        left:55px;
+        width:calc(100% - 55px);
+    }
+    nav.close  ~.header{
+        left:240px;
+        width:calc(100% - 240px);
+    }
+    nav ~ .content{
+        left:55px;
+        width:calc(100% - 55px);
+    }
+    .bar-toggle{
+        width:7%;
+        cursor: pointer;
+    }
+    .welcome-note{
+        width:70%;
+        margin:0;
+    }
+}
+@media screen and (max-width:600px){
+    nav{
+        width:0;
+        padding: 0px;
+        .logo{
+            opacity:0;
+            pointer-events: none;
+        }
+    }
+    .links li i{
+        opacity:0;
+        pointer-events: none;
+    }
+    nav.close{
+        width:240px;
+        z-index:3;
+    }
+    nav.close .logo{
+        opacity: 1;
+        pointer-events: auto;
+        z-index: 3;
+    }
+    nav li a .nav-name{
+        opacity:0;
+        pointer-events: none;
+    }
+    nav.close li i{
+        opacity: 1;
+        pointer-events: auto;
+    }
+    nav.close li a .nav-name{
+        opacity:1;
+        pointer-events: auto;
+        z-index: 3;
+    }
+    nav ~.header{
+        left:0px;
+        width:calc(100% - 0px);
+    }
+    nav.close  ~.header{
+        left:240px;
+        width:calc(100% - 240px);
+    }
+    nav ~ .content{
+        left:0px;
+        width:calc(100% - 0px);
+    }
+    nav.close ~ .content{
+        left:0px;
+        width:calc(100% - 0px);
+    }
+    .bar-toggle{
+        width:20%;
+        cursor: pointer;
+    }
+    .welcome-note{
+        margin:0;
+        opacity:0;
+        pointer-events: none;
+    }
+}
+.fixed-header {
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+  }

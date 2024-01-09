@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="body">
+    <form>
+        <input type="text" id="describe">
+        <button onclick="edit(event)">edit</button>
+    </form>
+    <h6 id="name">style</h6>
+    <!-- <div class="col-sm-6" id="col2">
+        <div class="card mb-3 coursecard" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-5">
+                <a href=""><img src="/assets/img/css-card.jpg" class="img-fluid rounded-start h-100" id="selectedImage2" alt="..."></a>
+              </div>
+              <div class="col-md-7">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="#">CSS</a></h5>
+                    <p class="card-text">Style sheet language used for describing the presentation.</p>
+                    <div class="row mb-3">
+                      <div class="col-md-12">
+                          <h6>Duration</h6>
+                          <p class="card-text">60 hrs</p>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <button class="btn btn-color" type="submit">Edit</button>
+                        <button class="btn btn-color" type="submit" onclick="deleteCourse('col2')">Delete</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div> -->
+    <script>
+        let arr=[{
+            img:"/assets/img/css-card.jpg",
+            name:"CSS",
+            describe:"Style  language used for describing the presentation.",
+        },]
+        function edit(event){
+            event.preventDefault();
+            let des=document.getElementById("name");
+            let inn=document.getElementById("describe");
+            inn.value=des.innerText;
+            arr[0].describe=inn.value;
+        }
+        let body=document.getElementById("body")
+        let id=document.createElement("div");
+        console.log(arr[0].img)
+        id.innerHTML=`
+        <div class="col-sm-6" id="col2">
+            <div class="card mb-3 coursecard" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-5">
+                    <a href=""><img src="${arr[0].img}" class="img-fluid rounded-start h-100" id="selectedImage2" alt="..."></a>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="#">CSS</a></h5>
+                        <p class="card-text">${arr[0].describe}</p>
+                        <div class="row mb-3">
+                          <div class="col-md-12">
+                              <h6>Duration</h6>
+                              <p class="card-text">60 hrs</p>
+                          </div>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <button class="btn btn-color" type="submit">Edit</button>
+                            <button class="btn btn-color" type="submit" onclick="deleteCourse('col2')">Delete</button>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        `;
+        body.append(id)
+    </script>
+</body>
+</html>

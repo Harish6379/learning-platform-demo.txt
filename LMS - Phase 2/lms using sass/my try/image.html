@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image to Multiple Cards Example</title>
+  <style>
+    .card {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+      width: 200px;
+      text-align: center;
+    }
+
+    .card img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Upload Image and Display in Cards</h2>
+
+<form id="imageForm">
+  <label for="imageUpload">Choose an image:</label>
+  <input type="file" id="imageUpload" accept="image/*">
+  <button type="button" onclick="handleImage()">Upload</button>
+</form>
+
+<div id="cardContainer"></div>
+
+<script>
+  function handleImage() {
+    var input = document.getElementById('imageUpload');
+    var file = input.files[0];
+
+    if (file) {
+      // Create a FileReader to read the selected image
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        var imageData = e.target.result;
+        createCard(imageData);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function createCard(imageData) {
+    // Create a new card element
+    var card = document.createElement('div');
+    card.className = 'card';
+
+    // Create an image element and set its source to the selected image
+    var image = document.createElement('img');
+    image.src = imageData;
+
+    // Append the image to the card
+    card.appendChild(image);
+
+    // Append the card to the card container
+    var cardContainer = document.getElementById('cardContainer');
+    cardContainer.appendChild(card);
+  }
+</script>
+
+</body>
+</html>

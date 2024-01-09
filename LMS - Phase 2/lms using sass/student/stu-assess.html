@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS-Skillo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <!-- side navbar -->
+    <nav class="l-0 t-0 vh-100">
+        <div class="logo-name d-flex flex-row">
+            <div class="logo-image p-2 mt-2">
+                <img src="/assets/img/logo.png" alt="" class="p-1">
+            </div>
+            <span class="logo ml-0 text-light fs-4 pl-2 fw-medium pt-3">Skillo</span>
+        </div>
+        <div class="links d-flex flex-column justify-content-between">
+            <ul class="nav-links list-unstyled p-2">
+                <li><a href="index.html" class="d-flex align-items-center fs-6 fw-medium"><i class="fa fa-home fs-6 d-flex justify-content-center align-items-center"></i><span class="nav-name">Dashboard</span></a></li>
+                <li><a href="enrolled-courses.html" class="d-flex align-items-center fs-6 fw-medium"><i class="fa fa-graduation-cap fs-6 d-flex justify-content-center align-items-center"></i><span class="nav-name">Enrolled Courses</span></a></li>
+                <li><a href="stu-assess.html" class="d-flex align-items-center fs-6 fw-medium active"><i class="fa fa-list-alt fs-6 d-flex justify-content-center align-items-center"></i><span class="nav-name">Assessment</span></a></li>
+                <li><a href="communication.html" class="d-flex align-items-center fs-6 fw-medium"><i class="fa fa-comments fs-6 d-flex justify-content-center align-items-center"></i><span class="nav-name">Communication</span></a></li>
+            </ul>
+            <ul class="logout-links list-unstyled p-2">
+                <li><a href="../index.html" class="d-flex align-items-center fs-6 fw-medium"><i class="fa fa-sign-out fs-6 d-flex justify-content-center align-items-center"></i><span class="nav-name">Logout</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- header -->
+    <div class="header d-flex flex-wrap flex-grow-1 align-items-center shadow t-0 p-3 bg-white text-dark">
+      <div class="bar-toggle">
+          <i class="fa fa-bars sidebar-toggle fs-5"></i>
+      </div>
+      <div class="welcome-note align-items-center justify-content-center mt-1">
+          <h3 class="fs-5">Welcome Student!</h3>
+      </div>
+  </div>
+    <!-- main Content -->
+    <main class="content p-4">
+        <!-- heading -->
+        <h4 class="mb-3">Assessment</h4>
+        <!-- accordian-->
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item rounded-2 shadow mb-3">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed shadow rounded-2 fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  HTML: Beginner Level
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                  <h6 class="card-title">Name</h6>
+                                  <p class="card-text">HTML</p>
+                                  <h6 class="card-title">Date &amp; Time</h6>
+                                  <p class="card-text"><date>26-12-2023</date> &amp; <time>13:30 - 14:00</time></p>
+                                  <div class="mybtn">
+                                    <button class="btn btn-color w-100" type="submit" id="html-test"><a href="html-quiz.html" class="text-dark">Attend Test</a></button>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                  <h6 class="card-title">Name</h6>
+                                  <p class="card-text">HTML Semantics</p>
+                                  <h6 class="card-title">Date &amp; Time</h6>
+                                  <p class="card-text"><date>23-12-2023</date> &amp; <time>13:30 - 14:00</time></p>
+                                  <div class="mybtn">
+                                    <button class="btn btn-color disabled w-100" type="submit" id="html-test"><a href="html-quiz.html" class="text-dark">Attend Test</a></button>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                  <h6 class="card-title">Name</h6>
+                                  <p class="card-text">HTML Basics</p>
+                                  <h6 class="card-title">Date &amp; Time</h6>
+                                  <p class="card-text"><date>20-12-2023</date> &amp; <time>13:30 - 14:00</time></p>
+                                  <div class="mybtn">
+                                    <button class="btn btn-color disabled  w-100" type="submit" id="html-test"><a href="html-quiz.html" class="text-dark">Assessment Completed</a></button>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item shadow rounded-2 mb-3">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed shadow rounded-2 fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                  CSS
+                </button>
+              </h2>
+              <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                  <h6 class="card-title">Name</h6>
+                                  <p class="card-text">CSS Basics</p>
+                                  <h6 class="card-title">Date &amp; Time</h6>
+                                  <p class="card-text"><date>20-12-2023</date> &amp; <time>13:30 - 14:00</time></p>
+                                  <div class="mybtn">
+                                    <button class="btn btn-color disabled  w-100" type="submit" id="html-test">Assessment Completed</button>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+              </div>
+            </div>
+        
+    </main>
+
+    <!-- script -->
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

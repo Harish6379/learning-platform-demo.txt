@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="myForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" onkeyup="validateName()">
+        <span id="nameError" class="error"></span><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" onkeyup="validateEmail()">
+        <span id="emailError" class="error"></span><br>
+
+        <input type="submit" value="Submit" onclick="validateForm(event)">
+    </form>
+
+    <script>
+        function validateName() {
+            var nameInput = document.getElementById('name');
+            var nameError = document.getElementById('nameError');
+            var nameRegex = /^[a-zA-Z\s]+$/;
+
+            if (nameInput.value.match(nameRegex)) {
+                nameError.innerHTML = '';
+            } else {
+                nameError.innerHTML = 'Name should only contain letters and spaces';
+            }
+        }
+
+        function validateEmail() {
+            var emailInput = document.getElementById('email');
+            var emailError = document.getElementById('emailError');
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (emailInput.value.match(emailRegex)) {
+                emailError.innerHTML = '';
+            } else {
+                emailError.innerHTML = 'Enter a valid email address';
+            }
+        }
+
+        function validateForm(e) {
+            e.preventDefault();
+            // Run individual field validations
+            validateName();
+            validateEmail();
+
+            // Additional overall validation if needed
+
+            // Submit the form if there are no errors
+            if (!document.querySelector('.error')) {
+                document.getElementById('myForm').submit();
+            }
+        }
+    </script>
+
+</body>
+</html>

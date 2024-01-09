@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Export Table as CSV</title>
+</head>
+<body>
+
+<div class="container mt-3">
+    <table class="table" id="myTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <!-- Add more columns if needed -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+                <td>john@example.com</td>
+                <!-- Add more rows if needed -->
+            </tr>
+        </tbody>
+    </table>
+
+    <button class="btn btn-primary" onclick="exportTableToCSV('myTable', 'exported_data.csv')">Export as CSV</button>
+</div>
+
+<script>
+    function exportTableToCSV(tableId, filename) {
+        var csv = [];
+        var rows = document.querySelectorAll('#' + tableId + ' thead tr, #' + tableId + ' tbody tr');
+
+        for (var i = 0; i < rows.length; i++) {
+            var row = [], cols = rows[i].querySelectorAll('td, th');
+
+            for (var j = 0; j < cols.length; j++) {
+                row.push(cols[j].innerText);
+            }
+
+            csv.push(row.join(','));
+        }
+
+        // Download CSV file
+        downloadCSV(csv.join('\n'), filename);
+    }
+
+    function downloadCSV(csv, filename) {
+        var csvFile;
+        var downloadLink;
+
+        // Create a Blob object to represent the CSV data
+        csvFile = new Blob([csv], { type: 'text/csv' });
+
+        // Create a download link element
+        downloadLink = document.createElement('a');
+
+        // Set the download link to the CSV file
+        downloadLink.download = filename;
+
+        // Create a link to the Blob object
+        downloadLink.href = window.URL.createObjectURL(csvFile);
+
+        // Append the download link to the body
+        document.body.appendChild(downloadLink);
+
+        // Click the download link to trigger the download
+        downloadLink.click();
+
+        // Remove the download link from the body
+        document.body.removeChild(downloadLink);
+    }
+</script>
+
+</body>
+</html>

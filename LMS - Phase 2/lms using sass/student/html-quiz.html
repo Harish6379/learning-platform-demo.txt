@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS-Skillo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <!-- main Content -->
+    <main class="p-4">
+        <!-- heading -->
+        
+        <!-- quiz -->
+        <div class="container-fluid w-100">
+          <h4>HTML</h4>
+            <div class="row">
+                <table class="table table-borderless table-light">
+                    <thead class="fixed-header">
+                      <tr class="mb-3">
+                        <th class="col-md-9 mb-3">Code - html123</th>
+                        <th class="col-md-3 mb-3 timer">Time Left - <span id="time">30:00</span></th>
+                      </tr>
+                    </thead>
+                    <tbody class="mt-3">
+                      <tr>
+                        <td>
+                            <h6><span >1. </span>HTML Stands for</h6>
+                            <p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="qu1" id="qu1-1">
+                                    <label class="form-check-label" for="qu1-1">
+                                        Hyper Text Module Language
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="qu1" id="qu1-2">
+                                    <label class="form-check-label" for="qu1-2">
+                                        Hyper Test Markup Language
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="qu1" id="qu1-3">
+                                    <label class="form-check-label" for="qu1-3">
+                                        Hyper Text Markup Language
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="qu1" id="qu1-4">
+                                    <label class="form-check-label" for="qu1-4">
+                                        Hyperlink Text Markup Language
+                                    </label>
+                                </div>
+                            </p>
+                        </td>
+                        <td><h6>Mark: 1</h6></td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <h6><span >2. </span>State whether the given question is true or false. HTML is a scripting language</h6>
+                            <p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="qu2" id="qu2-1">
+                                    <label class="form-check-label" for="qu2-1">
+                                        True
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="qu2" id="qu2-2">
+                                    <label class="form-check-label" for="qu2-2">
+                                        False
+                                    </label>
+                                </div>
+                            </p>
+                        </td>
+                        <td><h6>Mark: 1</h6></td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <h6><span >3. </span>List Types</h6>
+                            <p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkBox" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Ordered List
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkBox" name="flexRadioDefault" id="flexRadioDefault2">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Unordered List
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkBox" name="flexRadioDefault" id="flexRadioDefault3">
+                                    <label class="form-check-label" for="flexRadioDefault3">
+                                        Type List
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkBox" name="flexRadioDefault" id="flexRadioDefault4">
+                                    <label class="form-check-label" for="flexRadioDefault4">
+                                        Linked List
+                                    </label>
+                                </div>
+                            </p>
+                        </td>
+                        <td><h6>Mark: 3</h6></td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <button type="button" class="btn btn-color" id="submitTestBtn">Submit Test</button>
+                        </td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+        
+    </main>
+    <!-- Button trigger modal -->
+  
+  <!-- Modal submit-->
+  <div class="modal modal-lg fade" id="submitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Submit Test</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h4>Are you Sure?</h4>
+          <p>Do you really want to submit this test?</p>
+          <h6 class="fs-5">Total Questions:</h6>
+          <p><span class="fs-5">3</span></p>
+          <div class="row">
+            <div class="col-md-6">
+              <h6 class="text-success">No of attempted questions:</h6>
+              <p><span class="fs-5 text-success" id="attempt"></span></p>
+            </div>
+            <div class="col-md-6">
+              <h6 class="text-danger">No of unattempted questions:</h6>
+              <p><span class="fs-5 text-danger" id="unattempt"></span></p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-color" onclick="window.location='stu-assess.html'">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- timeup modal -->
+  <div class="modal fade" id="timeUpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Submit Test</h1>
+        </div>
+        <div class="modal-body">
+          <h4>Time is up!</h4>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+          <button type="button" class="btn btn-color" onclick="validateMarks()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- script -->
+    <script src="/assets/js/script.js"></script>
+    <script>
+      // quiz
+      // time
+      let timeInSeconds = 1800; // 30 minutes
+
+      function updateTimer() {
+         const minutes = Math.floor(timeInSeconds / 60);
+         const seconds = timeInSeconds % 60;
+         document.getElementById('time').innerText = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+         if (timeInSeconds === 0) {
+            clearInterval(timerInterval);
+            //alert('Time up!'); 
+            $('#timeUpModal').modal('show');
+         } else {
+            timeInSeconds--;
+         }
+      }
+
+      
+      const timerInterval = setInterval(updateTimer, 1000);
+      // quiz validation
+      
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("submitTestBtn").addEventListener("click", function () {
+        viewAttempt();
+        $('#submitModal').modal('show');
+      });
+      });
+       function viewAttempt(){
+        let attempt=0;
+        let answer1 = getSelectedValue("qu1");
+        let answer2 = getSelectedValue("qu2");
+        let answer3 = getSelectedCheckboxes("flexRadioDefault"); 
+        
+        if (answer1 !== null && answer1 !== "") {
+          attempt += 1;
+        }
+        if (answer2 !== null && answer2 !== "") {
+          attempt += 1;
+        }
+        if (Array.isArray(answer3) && answer3.length > 0) {
+          attempt += 1;
+        }
+      let name=document.getElementById("attempt").innerHTML=attempt;
+      console.log(name);
+      let name1=document.getElementById("unattempt").innerHTML=3-attempt;
+       }
+      
+      function getSelectedValue(name) {
+        const radioButtons = document.getElementsByName(name);
+
+        for (const radioButton of radioButtons) {
+          if (radioButton.checked) {
+            return radioButton.nextElementSibling.textContent.trim();
+          }
+        }
+
+        return null;
+      }
+
+      // Function to get the selected checkboxes values
+      function getSelectedCheckboxes(name) {
+        const checkboxes = document.getElementsByName(name);
+        const selectedCheckboxes = [];
+
+        for (const checkbox of checkboxes) {
+          if (checkbox.checked) {
+            selectedCheckboxes.push(checkbox.nextElementSibling.textContent.trim());
+          }
+        }
+
+        return selectedCheckboxes;
+      }
+      
+    </script>
+</body>
+</html>

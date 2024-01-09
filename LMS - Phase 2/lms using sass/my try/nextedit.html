@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>Edit Modal Example</title>
+</head>
+<body>
+
+<div class="container mt-5">
+  <form id="myForm">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <button type="button" class="btn btn-primary" onclick="addData()">Add Data</button>
+  </form>
+
+  <hr>
+
+  <!-- Edit Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Edit Data</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="editForm">
+            <div class="form-group">
+              <label for="editName">Name:</label>
+              <input type="text" class="form-control" id="editName" name="editName" required>
+            </div>
+            <div class="form-group">
+              <label for="editEmail">Email:</label>
+              <input type="email" class="form-control" id="editEmail" name="editEmail" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="updateData()">Update Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Stored Data:</h3>
+  <ul id="dataList"></ul>
+</div>
+<!-- ... (previous HTML code) ... -->
+
+<!-- ... (previous HTML code) ... -->
+
+<script>
+    let formDataArray = [];
+  
+    function addData() {
+      const formData = {
+        id: formDataArray.length,
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value
+      };
+  
+      formDataArray.push(formData);
+      console.log(formDataArray)
+      updateDataList();
+      clearForm();
+    }
+  
+    function editData(index) {
+      const editFormData = formDataArray[index];
+      document.getElementById('editName').value = editFormData.name;
+      document.getElementById('editEmail').value = editFormData.email;
+      // Save the index in a data attribute for later use
+      $('#editModal').attr('data-edit-index', index);
+      $('#editModal').modal('show');
+    }
+  
+    function updateData() {
+      // Get the edited data from the modal
+      const editedData = {
+        name: document.getElementById('editName').value,
+        email: document.getElementById('editEmail').value
+      };
+  
+      // Get the index from the modal data attribute
+      const editIndex = parseInt($('#editModal').attr('data-edit-index'), 10);
+  
+      // Update all stored data based on the index
+      formDataArray.forEach((data, index) => {
+        if (index === editIndex) {
+          formDataArray[index] = { ...data, ...editedData };
+        }
+      });
+  
+      updateDataList();
+      $('#editModal').modal('hide');
+    }
+  
+    function updateDataList() {
+      const dataList = document.getElementById('dataList');
+      dataList.innerHTML = '';
+  
+      formDataArray.forEach((data, index) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `ID: ${data.id}, Name: ${data.name}, Email: ${data.email} `;
+        dataList.appendChild(listItem);
+  
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.classList.add('btn', 'btn-sm', 'btn-primary', 'ml-2');
+        editButton.onclick = () => editData(index);
+        listItem.appendChild(editButton);
+      });
+    }
+  
+    function clearForm() {
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+    }
+  </script>
+  
+  <!-- ... (remaining HTML code) ... -->
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+  <!-- ... (remaining HTML code) ... -->
+  

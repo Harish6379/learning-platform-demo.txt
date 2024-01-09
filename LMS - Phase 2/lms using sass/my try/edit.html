@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Edit Table Row using Bootstrap Modal</title>
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h2>Editable Table</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="row1">
+          <td>1</td>
+          <td>John Doe</td>
+          <td>john@example.com</td>
+          <td>Admin</td>
+          <td>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="openEditModal('row1')">Edit</button>
+          </td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bootstrap Modal for Editing -->
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Edit Row</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="editForm">
+            <div class="form-group">
+              <label for="editName">Name:</label>
+              <input type="text" class="form-control" id="editName" required>
+            </div>
+            <div class="form-group">
+              <label for="editEmail">Email:</label>
+              <input type="email" class="form-control" id="editEmail" required>
+            </div>
+            <div class="form-group">
+              <label for="editRole">Role:</label>
+              <select class="form-control" id="editRole" required>
+                <option value="Admin">Admin</option>
+                <option value="User">User</option>
+              </select>
+            </div>
+            <input type="hidden" id="editRowId">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="saveChanges()">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    function openEditModal(rowId) {
+      // Extract data from the selected row and populate the modal
+      const row = document.getElementById(rowId);
+      const cells = row.getElementsByTagName('td');
+      const name = cells[1].innerText;
+      const email = cells[2].innerText;
+      const role = cells[3].innerText;
+
+      document.getElementById('editName').value = name;
+      document.getElementById('editEmail').value = email;
+      document.getElementById('editRole').value = role;
+      document.getElementById('editRowId').value = rowId;
+    }
+
+    function saveChanges() {
+      // Get edited data from the modal
+      const editedName = document.getElementById('editName').value;
+      const editedEmail = document.getElementById('editEmail').value;
+      const editedRole = document.getElementById('editRole').value;
+      const rowId = document.getElementById('editRowId').value;
+
+      // Update the table row with the edited data
+      const row = document.getElementById(rowId);
+      const cells = row.getElementsByTagName('td');
+      cells[1].innerText = editedName;
+      cells[2].innerText = editedEmail;
+      cells[3].innerText = editedRole;
+
+      // Close the modal
+      $('#editModal').modal('hide');
+    }
+  </script>
+
+</body>
+</html>

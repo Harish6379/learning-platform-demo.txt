@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Vertical Tabs Chat</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    .tab-content {
+      border-left: 1px solid #ddd;
+      border-right: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding: 20px;
+    }
+
+    #chat {
+      max-height: 200px; /* Set a maximum height for the chat area */
+      overflow-y: auto; /* Enable vertical scrolling if the content overflows */
+      border: 1px solid #ddd;
+      padding: 5px;
+    }
+
+    .message {
+        width:50%;
+        background-color: #f0f0f0;
+        padding: 0px;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-md-3">
+      <!-- Vertical Tabs -->
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" id="v-pills-chat-tab" data-toggle="pill" href="#v-pills-chat" role="tab" aria-controls="v-pills-chat" aria-selected="true">Chat</a>
+        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <!-- Tab Content -->
+      <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-chat" role="tabpanel" aria-labelledby="v-pills-chat-tab">
+          <!-- Chat Content Goes Here -->
+          <h5>Chat Content Goes Here</h5>
+          <div class="text-area h-25 overflow-scroll" id="chat"></div>
+          <form id="chatForm">
+            <div class="form-group">
+              <textarea class="form-control" id="chatMessage" rows="3" placeholder="Type your message..."></textarea>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="sendMessage()">Send Message</button>
+          </form>
+        </div>
+        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+          <!-- Settings Content Goes Here -->
+          <h5>Settings Content Goes Here</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+  function sendMessage() {
+    // Add your logic here to handle the sent message
+    var message = document.getElementById('chatMessage').value;
+    let area = document.getElementById("chat");
+    let div = document.createElement("div");
+    div.classList.add("message", "row");
+    div.innerHTML = `
+    <div class="col-md-6">
+    <p>${message}</p>
+    </div>
+    `;
+    area.append(div);
+    document.getElementById('chatMessage').value = ''; // Clear the input field after sending the message
+    console.log('Message sent:', message);
+    // You can send the message to a server, update the chat content, etc.
+  }
+</script>
+
+</body>
+</html>

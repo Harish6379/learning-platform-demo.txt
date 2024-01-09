@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Uploaded Folders/ZIPs as Links</title>
+</head>
+<body>
+    <input type="file" id="fileInput" webkitdirectory directory multiple>
+    <button onclick="uploadFiles()">Upload Files/Folders</button>
+
+    <div id="fileLinks"></div>
+
+    <script>
+        function uploadFiles() {
+            const input = document.getElementById('fileInput');
+            const files = input.files;
+
+            if (files.length === 0) {
+                alert('Please select at least one file or folder.');
+                return;
+            }
+
+            const fileLinksContainer = document.getElementById('fileLinks');
+
+            // Display links for each file or folder
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const isDirectory = file.isDirectory || file.webkitRelativePath.includes('/'); // Check if it's a directory or a ZIP file
+
+                const fileLink = document.createElement('a');
+                fileLink.href = isDirectory ? '#' : URL.createObjectURL(file);
+                fileLink.target = '_blank';
+                fileLink.textContent = `${isDirectory ? 'Folder' : 'File'} ${i + 1}: ${file.name}`;
+                fileLink.style.display = 'block';
+                fileLinksContainer.appendChild(fileLink);
+            }
+        }
+    </script>
+</body>
+</html>

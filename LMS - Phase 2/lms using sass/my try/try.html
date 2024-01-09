@@ -1,0 +1,129 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>Bootstrap Tabs Example</title>
+</head>
+<body>
+
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <ul class="nav nav-tabs nav-justified flex-column" id="myTabs">
+        <li class="nav-item nav-justified">
+          <a class="nav-link active" id="tab1" data-toggle="tab" href="#content1">Tab 1</a>
+        </li>
+        <li class="nav-item nav-justified">
+          <a class="nav-link" id="tab2" data-toggle="tab" href="#content2">Tab 2</a>
+        </li>
+        <li class="nav-item nav-justified">
+          <a class="nav-link" id="tab3" data-toggle="tab" href="#content3">Tab 3</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <div class="tab-content mt-2">
+        <div class="tab-pane fade show active" id="content1">
+          <p>Content for Tab 1 goes here.</p>
+        </div>
+        <div class="tab-pane fade" id="content2">
+          <p>Content for Tab 2 goes here.</p>
+        </div>
+        <div class="tab-pane fade" id="content3">
+          <p>Content for Tab 3 goes here.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+
+  
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation</title>
+  <style>
+    .form-control {
+      margin-bottom: 15px;
+    }
+    .valid-input {
+      border-color: #28a745;
+    }
+    .invalid-input {
+      border-color: #dc3545;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-5">
+  <form id="myForm">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter your name">
+    </div>
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter your email">
+    </div>
+    <button type="button" class="btn btn-primary" onclick="validateForm()">Submit</button>
+  </form>
+</div>
+
+<script>
+  function validateForm() {
+    // Reset previous validation styles
+    resetValidationStyles();
+
+    // Get form inputs
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+
+    // Validate name
+    if (nameInput.value.trim() === '') {
+      markAsInvalid(nameInput);
+    } else {
+      markAsValid(nameInput);
+    }
+
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailInput.value.trim())) {
+      markAsInvalid(emailInput);
+    } else {
+      markAsValid(emailInput);
+    }
+  }
+
+  function markAsValid(inputElement) {
+    inputElement.classList.add('valid-input');
+  }
+
+  function markAsInvalid(inputElement) {
+    inputElement.classList.add('invalid-input');
+    inputElement.focus();
+  }
+
+  function resetValidationStyles() {
+    const formControls = document.querySelectorAll('.form-control');
+    formControls.forEach(input => {
+      input.classList.remove('valid-input', 'invalid-input');
+    });
+  }
+</script>
+
+</body>
+</html> -->
+
+

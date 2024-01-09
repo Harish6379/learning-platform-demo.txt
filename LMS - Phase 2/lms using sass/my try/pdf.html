@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Uploaded PDFs with File Names</title>
+</head>
+<body>
+    <input type="file" id="fileInput" accept=".pdf" multiple>
+    <button onclick="uploadFiles()">Upload PDFs</button>
+
+    <div id="pdfLinks"></div>
+
+    <script>
+        function uploadFiles() {
+            const input = document.getElementById('fileInput');
+            const files = input.files;
+
+            if (files.length === 0) {
+                alert('Please select at least one PDF file.');
+                return;
+            }
+
+            const pdfLinksContainer = document.getElementById('pdfLinks');
+
+            // Display PDF links with file names
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                if (file.type === 'application/pdf') {
+                    const pdfLink = document.createElement('a');
+                    pdfLink.href = URL.createObjectURL(file);
+                    pdfLink.target = '_blank';
+                    pdfLink.textContent = `PDF File ${i + 1}: ${file.name}`;
+                    pdfLink.style.display = 'block';
+                    pdfLinksContainer.appendChild(pdfLink);
+                } else {
+                    alert(`File ${i + 1} is not a PDF file.`);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+ 

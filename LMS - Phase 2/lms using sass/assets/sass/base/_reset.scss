@@ -1,0 +1,18 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as mx;
+body{
+    background-color:v.$bgcolor;
+}
+a{
+    text-decoration: none;
+    cursor:pointer;
+}
+.btn-color{
+    @include mx.btn-color;
+    &:hover{
+        @include mx.btn-color-hover;
+    }
+}
+.required-color{
+    @include mx.required;
+}

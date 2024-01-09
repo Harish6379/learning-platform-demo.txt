@@ -1,0 +1,65 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as mx;
+
+// login page
+.featured-image img{
+    @include mx.img-size;
+}
+.invalid{
+    border-color:v.$error-color;
+}
+.valid{
+    border-color:v.$success-color;
+}
+.error{
+    color:v.$error-color;
+}
+.cards {
+    transition: background-color 0.3s ease;
+  }
+
+.cards:hover {
+    background-color: v.$border-color;
+}
+
+// .chart-container {
+//     height: 243px; 
+//     overflow: hidden;
+//     transition: height 0.3s ease;
+// }
+// .chart-container.collapsed {
+//     height: 0; 
+// }
+@media screen and (max-width:767px){
+    .left-box{
+        height:0px;
+        overflow: hidden;
+    }
+    .right-box{
+        padding:10px;
+    }
+    .header-text h3,p{
+        font-size: 1rem !important;
+        margin-bottom: 0;
+    }
+    .mybtn{
+        margin-bottom: 1px !important;
+    }
+}
+@media screen and (max-width:1000px){
+    .box-area{
+        height:80vh;
+    }
+    .size{
+        font-size: 1rem !important;
+    }
+    .right-box{
+        height:400px;
+        .rightside{
+            margin-top: 20%;
+        }
+    }
+    .featured-image img{
+        @include mx.img-size(340px,540px);
+    }
+}
